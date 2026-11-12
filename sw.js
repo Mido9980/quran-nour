@@ -1,4 +1,4 @@
-const CACHE = 'quran-nour-v1';
+const CACHE = 'quran-nour-v3';
 const ASSETS = ['./', './index.html', './styles.css', './app.js', './i18n.js', './data.js', './amiri.ttf',
   './manifest.json', './icons/i192.png', './icons/i512.png', './icons/apple-touch-icon.png', './icons/maskable512.png'];
 

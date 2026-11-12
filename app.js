@@ -38,11 +38,27 @@ function norm(s) {
 }
 
 const BASM = 'بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ';
+
+/* remove the basmala that is embedded at the start of the first ayah of most surahs.
+   The mushaf data orders some diacritics differently, so we match on the normalised form. */
+function stripBasm(txt) {
+  const target = norm(txt).indexOf(norm(BASM)) === 0;
+  if (!target) return txt;
+  const need = norm(BASM).replace(/\s+/g, '').length;
+  let acc = '', i = 0;
+  for (; i < txt.length; i++) {
+    const c = norm(txt[i]);
+    if (c) acc += c;
+    if (acc.length >= need) break;
+  }
+  while (i + 1 < txt.length && /[\u064B-\u065F\u0670\u06D6-\u06ED\s]/.test(txt[i + 1])) i++;
+  return txt.slice(i + 1).trim();
+}
 (function stripBasmala() {
   Q.forEach(s => {
     if (s.n === 1 || s.n === 9) return;
     const a = s.ayahs[0];
-    if (a && a[1].indexOf(BASM) === 0) a[1] = a[1].slice(BASM.length).trim();
+    if (a && a[1]) a[1] = stripBasm(a[1]);
   });
 })();
 
