@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-th="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>القرآن الكريم — نور | EASY CODE</title>
+<meta name="description" content="القرآن الكريم كاملاً بالخط العثماني، يعمل بدون إنترنت: قراءة ببطاقات أو مصحف، بحث، أجزاء، محفوظات، و9 لغات للواجهة.">
+<meta name="theme-color" content="#141d46">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/i192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="offbar" class="offbar"><span id="offtxt"></span><button id="offact" hidden></button></div>
+
+<div id="splash" class="splash">
+  <div class="splash-in">
+    <div class="orn">
+      <svg viewBox="0 0 120 120" aria-hidden="true">
+        <g fill="none" stroke="#e7cf9b" stroke-width="1.4">
+          <rect x="30" y="30" width="60" height="60" transform="rotate(45 60 60)"/>
+          <rect x="30" y="30" width="60" height="60"/>
+          <circle cx="60" cy="60" r="42"/>
+          <circle cx="60" cy="60" r="30"/>
+        </g>
+        <circle cx="60" cy="60" r="5" fill="#e7cf9b"/>
+      </svg>
+    </div>
+    <div class="logo-big">﷽</div>
+    <h1 data-i="app">القرآن الكريم</h1>
+    <p class="mut" data-i="tagline">يعمل بدون إنترنت</p>
+    <div class="loadbar"><span id="loadFill"></span></div>
+    <p class="tiny" id="loadTxt">…</p>
+  </div>
+</div>
+
+<header class="top" id="top">
+  <button class="ic back" id="backBtn" aria-label="back" hidden>‹</button>
+  <div class="brand" id="brandBox">
+    <span class="mark">﷽</span>
+    <div><b data-i="app">القرآن الكريم</b><i data-i="tagline">يعمل بدون إنترنت</i></div>
+  </div>
+  <div class="acts">
+    <button class="ic" id="langBtn" aria-label="language">🌐</button>
+    <button class="ic" id="themeBtn" aria-label="theme">🌓</button>
+  </div>
+</header>
+
+<main id="pgHome" class="page on">
+  <section class="hero" id="heroCard">
+    <div class="hero-glow"></div>
+    <svg class="hero-orn" viewBox="0 0 200 200" aria-hidden="true">
+      <g fill="none" stroke="currentColor" stroke-width="1">
+        <circle cx="100" cy="100" r="70"/><circle cx="100" cy="100" r="52"/>
+        <rect x="58" y="58" width="84" height="84" transform="rotate(45 100 100)"/>
+        <rect x="58" y="58" width="84" height="84"/>
+      </g>
+    </svg>
+    <div class="hero-top">
+      <span class="hero-cap" data-i="ayah_of_day">آية اليوم</span>
+      <span class="hero-dot">✦</span>
+    </div>
+    <p class="hero-ayah" id="heroAyah" dir="rtl"></p>
+    <div class="hero-ref" id="heroRef"></div>
+  </section>
+
+  <div class="last" id="lastRead" hidden>
+    <div class="lr-l"><span class="lr-cap" data-i="last_read">متابعة القراءة</span><b id="lrName"></b><i id="lrAyah"></i></div>
+    <span class="lr-go">↩</span>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><b>114</b><span data-i="stat_surahs">سورة</span></div>
+    <div class="stat"><b>30</b><span data-i="stat_juz">جزء</span></div>
+    <div class="stat"><b>6236</b><span data-i="stat_ayahs">آية</span></div>
+  </div>
+
+  <div class="searchbox">
+    <input id="q" type="search" placeholder="ابحث في القرآن…" data-i-ph="search_ph" autocomplete="off">
+    <button id="qGo" data-i="search_btn">بحث</button>
+  </div>
+
+  <div class="tabs" id="tabs">
+    <button class="tab on" data-t="surah" data-i="tab_surah">السور</button>
+    <button class="tab" data-t="juz" data-i="tab_juz">الأجزاء</button>
+  </div>
+
+  <div class="filter" id="filterWrap">
+    <input id="flt" type="search" placeholder="دوّر على سورة…" data-i-ph="filter_ph" autocomplete="off">
+  </div>
+
+  <div id="listBox"></div>
+</main>
+
+<main id="pgRead" class="page">
+  <div class="readhead">
+    <h2 id="rhTitle"></h2>
+    <p id="rhSub"></p>
+    <div class="prog"><span id="progFill"></span></div>
+  </div>
+  <div class="modebar" id="modeBar">
+    <button data-m="cards" data-i="cards">بطاقات</button>
+    <button data-m="mushaf" data-i="mushaf">مصحف</button>
+  </div>
+  <div id="ayatBox" class="ayat" dir="rtl"></div>
+  <div class="readfoot" id="readFoot"></div>
+</main>
+
+<main id="pgSearch" class="page">
+  <div class="searchbox sticky">
+    <input id="q2" type="search" placeholder="ابحث في القرآن…" data-i-ph="search_ph" autocomplete="off">
+    <button id="q2Go" data-i="search_btn">بحث</button>
+  </div>
+  <div id="resBox"></div>
+</main>
+
+<main id="pgSaved" class="page">
+  <h2 class="page-t" data-i="tab_saved">المحفوظات</h2>
+  <div id="savedBox"></div>
+</main>
+
+<main id="pgSet" class="page">
+  <h2 class="page-t" data-i="settings">الإعدادات</h2>
+  <div class="card">
+    <h3 data-i="font_size">حجم خط المصحف</h3>
+    <div class="row"><input id="fs" type="range" min="22" max="50" step="1"><b id="fsVal"></b></div>
+    <div class="sample" id="fsSample" dir="rtl">بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ</div>
+  </div>
+  <div class="card">
+    <h3 data-i="appearance">المظهر</h3>
+    <div class="chips" id="themeChips">
+      <button data-th="light" data-i="th_light">نهاري</button>
+      <button data-th="sepia" data-i="th_sepia">ورقي</button>
+      <button data-th="dark" data-i="th_dark">ليلي</button>
+    </div>
+  </div>
+  <div class="card">
+    <h3 data-i="font">الخط</h3>
+    <div class="chips" id="fontChips">
+      <button data-f="amiri" data-i="font_amiri">أميري (عثماني)</button>
+      <button data-f="system" data-i="font_system">خط الجهاز</button>
+    </div>
+  </div>
+  <div class="card">
+    <h3 data-i="lang">اللغة</h3>
+    <div class="chips" id="langChipsHome"></div>
+  </div>
+  <div class="card">
+    <h3 data-i="install">التطبيق</h3>
+    <p class="mut small" data-i="install_hint">لتثبيته على الأندرويد…</p>
+    <button class="btn" id="installBtn" hidden data-i="install">تثبيت التطبيق</button>
+    <button class="btn ghost" id="clearBtn" data-i="clear">مسح المحفوظات</button>
+    <p class="tiny mut center" data-i="footer">النص: مصحف المدينة</p>
+  </div>
+</main>
+
+<nav class="bottom" id="bottomNav">
+  <button data-p="Home" class="on">
+    <svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>
+    <span data-i="nav_home">الرئيسية</span>
+  </button>
+  <button data-p="Search">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" fill="none" stroke-width="2"/><path d="M16.5 16.5 21 21" stroke-width="2" fill="none"/></svg>
+    <span data-i="nav_search">البحث</span>
+  </button>
+  <button data-p="Saved">
+    <svg viewBox="0 0 24 24"><path d="M6 3h12a1 1 0 0 1 1 1v17l-7-4-7 4V4a1 1 0 0 1 1-1z"/></svg>
+    <span data-i="nav_saved">المحفوظات</span>
+  </button>
+  <button data-p="Set">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2" fill="none" stroke-width="2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3M5.2 5.2l2.1 2.1M16.7 16.7l2.1 2.1M18.8 5.2l-2.1 2.1M7.3 16.7l-2.1 2.1" stroke-width="2" fill="none" stroke-linecap="round"/></svg>
+    <span data-i="nav_set">الإعدادات</span>
+  </button>
+</nav>
+
+<div class="sheet" id="langSheet">
+  <div class="sheet-in">
+    <div class="sheet-t" data-i="lang_title">اختر لغة الواجهة</div>
+    <div id="langList" class="langlist"></div>
+    <button class="cancel" data-close="langSheet" data-i="close">إغلاق</button>
+  </div>
+</div>
+
+<div class="sheet" id="sheet">
+  <div class="sheet-in">
+    <div class="sheet-t" id="sheetT"></div>
+    <button id="actSave" data-i="save_ayah">حفظ الآية</button>
+    <button id="actCopy" data-i="copy">نسخ</button>
+    <button id="actShare" data-i="share">مشاركة</button>
+    <button id="actStart" data-i="read_here">القراءة من هنا</button>
+    <button class="cancel" id="actCancel" data-i="cancel">إلغاء</button>
+  </div>
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script src="i18n.js"></script>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
