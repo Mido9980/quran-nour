@@ -1,5 +1,5 @@
-const CACHE = 'quran-nour-v3';
-const ASSETS = ['./', './index.html', './styles.css', './app.js', './i18n.js', './data.js', './amiri.ttf',
+const CACHE = 'quran-nour-v4';
+const ASSETS = ['./', './index.html', './styles.css?v=3', './app.js?v=3', './i18n.js?v=3', './data.js?v=3', './amiri.ttf',
   './manifest.json', './icons/i192.png', './icons/i512.png', './icons/apple-touch-icon.png', './icons/maskable512.png'];
 
 self.addEventListener('install', e => {
